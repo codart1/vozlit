@@ -2,16 +2,18 @@ import { defineConfig } from 'vite';
 import solidPlugin from 'vite-plugin-solid';
 import { resolve } from 'path';
 import fs from 'fs';
+import { libInjectCss } from 'vite-plugin-lib-inject-css';
 
 // Tampermonkey metadata header
 const userscriptHeader = `// ==UserScript==
 // @name         VozLit
-// @namespace    http://tampermonkey.net/
+// @namespace    http://vozlit.com/
 // @version      0.1
 // @description  Make voz great again!
 // @author       Zollback
 // @match        https://voz.vn/*
 // @grant        none
+// @run-at       document-start
 // ==/UserScript==
 
 `;
@@ -33,20 +35,21 @@ export default defineConfig({
         }
       },
     },
+    libInjectCss(),
   ],
   build: {
     target: 'esnext',
     minify: false, // Optional: easier debugging when false
     cssCodeSplit: false, // Keep CSS in the same file
+    assetsInlineLimit: 100000000, // Ensure all assets are inlined
     lib: {
-      entry: resolve(__dirname, 'src/index.tsx'), // Update to your entry file
-      formats: ['iife'], // Immediately-Invoked Function Expression format
-      name: 'SolidUserScript', // Global variable name
-      fileName: () => 'userscript.js', // Output file name
+      entry: resolve(__dirname, 'src/index.tsx'),
+      formats: ['iife'],
+      name: 'SolidUserScript',
+      fileName: () => 'userscript.js',
     },
     rollupOptions: {
       output: {
-        // Ensure all assets are included in the main file
         inlineDynamicImports: true,
       },
     },
