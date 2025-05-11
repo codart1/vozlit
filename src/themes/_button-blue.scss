@@ -51,6 +51,7 @@ $dark: (
   pageBg: map.get($color, dimmed-300),
   contentBg: map.get($color, dimmed-100),
   contentHighlightBg: map.get($color, dimmed-50),
+  textMuted: map.get($color, dimmed-500),
 );
 
 $light: (
@@ -62,4 +63,5 @@ $light: (
   pageBg: map.get($color, dimmed-50),
   contentBg: map.get($color, dimmed-100),
   contentHighlightBg: map.get($color, dimmed-50),
+  textMuted: map.get($color, dimmed-500),
 );

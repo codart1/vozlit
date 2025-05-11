@@ -70,6 +70,12 @@
   --xf-contentHighlightBg--s: #{map.get($content-highlight, s)};
   --xf-contentHighlightBg--l: #{map.get($content-highlight, l)};
   --xf-contentHighlightBg--a: #{map.get($content-highlight, a)};
+
+  $text-muted: get-hsl-channels(map.get($theme, textMuted));
+  --xf-textColorMuted--h: #{map.get($text-muted, h)};
+  --xf-textColorMuted--s: #{map.get($text-muted, s)};
+  --xf-textColorMuted--l: #{map.get($text-muted, l)};
+  --xf-textColorMuted--a: #{map.get($text-muted, a)};
 }
 
 :root {
