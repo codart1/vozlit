@@ -100,6 +100,18 @@
   --xf-buttonTextColor--s: #{map.get($button-text, s)};
   --xf-buttonTextColor--l: #{map.get($button-text, l)};
   --xf-buttonTextColor--a: #{map.get($button-text, a)};
+
+  $palette-accent2: get-hsl-channels(map.get($theme, paletteAccent2));
+  --xf-paletteAccent2--h: #{map.get($palette-accent2, h)};
+  --xf-paletteAccent2--s: #{map.get($palette-accent2, s)};
+  --xf-paletteAccent2--l: #{map.get($palette-accent2, l)};
+  --xf-paletteAccent2--a: #{map.get($palette-accent2, a)};
+
+  $palette-color3: get-hsl-channels(map.get($theme, paletteColor3));
+  --xf-paletteColor3--h: #{map.get($palette-color3, h)};
+  --xf-paletteColor3--s: #{map.get($palette-color3, s)};
+  --xf-paletteColor3--l: #{map.get($palette-color3, l)};
+  --xf-paletteColor3--a: #{map.get($palette-color3, a)};
 }
 
 :root {
