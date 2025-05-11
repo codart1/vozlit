@@ -1,0 +1,61 @@
+@use 'sass:map';
+
+/*
+  Button Blue theme colors
+  These colors are used for the button-blue theme
+*/
+$color: (
+  primary-50:  #f0f9ff,
+  primary-100: #e1f3fd,
+  primary-200: #bce7fb,
+  primary-300: #81d5f8,
+  primary-400: #3ec0f2,
+  primary-500: #26b3eb, // base color
+  primary-600: #0887c1,
+  primary-700: #086c9c,
+  primary-800: #0b5b81,
+  primary-900: #0f4b6b,
+  primary-950: #0a3147,
+
+  secondary-50:  #fef5ee,
+  secondary-100: #fce8d8,
+  secondary-200: #f9ceaf,
+  secondary-300: #f4ab7d,
+  secondary-400: #ef7e48,
+  secondary-500: #eb5e26,
+  secondary-600: #dc441a,
+  secondary-700: #b73217,
+  secondary-800: #92291a,
+  secondary-900: #752419,
+  secondary-950: #3f0f0b,
+
+  dimmed-50: #f5f6f6,
+  dimmed-100: #e4e8e9,
+  dimmed-200: #ccd3d5,
+  dimmed-300: #a9b4b7,
+  dimmed-400: #7f8e91,
+  dimmed-500: #637377,
+  dimmed-600: #556165,
+  dimmed-700: #495155,
+  dimmed-800: #414749,
+  dimmed-900: #303436,
+  dimmed-950: #232729,
+);
+
+$dark: (
+  chromeBg: map.get($color, primary-600),
+  chromeText: map.get($color, primary-200),
+  text: map.get($color, dimmed-950),
+  link: map.get($color, primary-900),
+  linkHover: map.get($color, secondary-700),
+  pageBg: map.get($color, dimmed-300),
+);
+
+$light: (
+  chromeBg: map.get($color, primary-200),
+  chromeText: map.get($color, primary-900),
+  text: map.get($color, dimmed-800),
+  link: map.get($color, primary-600),
+  linkHover: map.get($color, secondary-400),
+  pageBg: map.get($color, dimmed-50),
+);

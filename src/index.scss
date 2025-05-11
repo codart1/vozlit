@@ -8,6 +8,9 @@
 // Import pink theme tokens and maps
 @use './themes/pink' as pink-theme;
 
+// Import button-blue theme tokens and maps
+@use './themes/button-blue' as button-blue-theme;
+
 // Helper function to extract HSL channels from a color
 @function get-hsl-channels($color) {
   @return (
@@ -67,4 +70,12 @@ html[data-theme='pink-dark'] {
 
 html[data-theme='pink-light'] {
   @include theme-vars(pink-theme.$light);
+}
+
+html[data-theme='button-blue-dark'] {
+  @include theme-vars(button-blue-theme.$dark);
+}
+
+html[data-theme='button-blue-light'] {
+  @include theme-vars(button-blue-theme.$light);
 }
