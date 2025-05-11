@@ -58,6 +58,18 @@
   --xf-pageBg--s: #{map.get($page-bg, s)};
   --xf-pageBg--l: #{map.get($page-bg, l)};
   --xf-pageBg--a: #{map.get($page-bg, a)};
+
+  $content-bg: get-hsl-channels(map.get($theme, contentBg));
+  --xf-contentBg--h: #{map.get($content-bg, h)};
+  --xf-contentBg--s: #{map.get($content-bg, s)};
+  --xf-contentBg--l: #{map.get($content-bg, l)};
+  --xf-contentBg--a: #{map.get($content-bg, a)};
+
+  $content-highlight: get-hsl-channels(map.get($theme, contentHighlightBg));
+  --xf-contentHighlightBg--h: #{map.get($content-highlight, h)};
+  --xf-contentHighlightBg--s: #{map.get($content-highlight, s)};
+  --xf-contentHighlightBg--l: #{map.get($content-highlight, l)};
+  --xf-contentHighlightBg--a: #{map.get($content-highlight, a)};
 }
 
 :root {
