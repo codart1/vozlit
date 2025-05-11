@@ -112,10 +112,22 @@
   --xf-paletteColor3--s: #{map.get($palette-color3, s)};
   --xf-paletteColor3--l: #{map.get($palette-color3, l)};
   --xf-paletteColor3--a: #{map.get($palette-color3, a)};
+
+  $palette-accent1: get-hsl-channels(map.get($theme, paletteAccent1));
+  --xf-paletteAccent1--h: #{map.get($palette-accent1, h)};
+  --xf-paletteAccent1--s: #{map.get($palette-accent1, s)};
+  --xf-paletteAccent1--l: #{map.get($palette-accent1, l)};
+  --xf-paletteAccent1--a: #{map.get($palette-accent1, a)};
+
+  $palette-accent3: get-hsl-channels(map.get($theme, paletteAccent3));
+  --xf-paletteAccent3--h: #{map.get($palette-accent3, h)};
+  --xf-paletteAccent3--s: #{map.get($palette-accent3, s)};
+  --xf-paletteAccent3--l: #{map.get($palette-accent3, l)};
+  --xf-paletteAccent3--a: #{map.get($palette-accent3, a)};
 }
 
 :root {
-  @include theme-vars(pink-theme.$light); // Default theme
+  --v-animation-speed: 0.3s;
 }
 
 html[data-theme='pink-dark'] {
@@ -133,3 +145,28 @@ html[data-theme='button-blue-dark'] {
 html[data-theme='button-blue-light'] {
   @include theme-vars(button-blue-theme.$light);
 }
+
+// #region Utility classes
+.uti {
+  &-relative {
+    position: relative;
+  }
+
+  &-no-pointer {
+    pointer-events: none;
+  }
+  
+  &-slide-out {
+    transform: translateY(100%);
+    opacity: 0;
+    transition: transform var(--v-animation-speed) ease,
+      opacity var(--v-animation-speed) ease;
+  }
+  &-slide-in {
+    transform: translateY(0);
+    opacity: 1;
+    transition: transform var(--v-animation-speed) ease,
+      opacity var(--v-animation-speed) ease;
+  }
+}
+// #endregion

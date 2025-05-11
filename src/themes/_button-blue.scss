@@ -58,6 +58,8 @@ $dark: (
   buttonTextColor: map.get($color, primary-100),
   paletteAccent2: map.get($color, secondary-500),
   paletteColor3: map.get($color, primary-500),
+  paletteAccent1: map.get($color, secondary-200),
+  paletteAccent3: map.get($color, secondary-600),
 );
 
 $light: (
@@ -76,4 +78,6 @@ $light: (
   buttonTextColor: map.get($color, primary-100),
   paletteAccent2: map.get($color, secondary-500),
   paletteColor3: map.get($color, primary-500),
+  paletteAccent1: map.get($color, secondary-200),
+  paletteAccent3: map.get($color, secondary-600),
 );
