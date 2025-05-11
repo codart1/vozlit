@@ -39,7 +39,7 @@ export default defineConfig({
   ],
   build: {
     target: 'esnext',
-    minify: false, // Optional: easier debugging when false
+    minify: true, // Optional: easier debugging when false
     cssCodeSplit: false, // Keep CSS in the same file
     assetsInlineLimit: 100000000, // Ensure all assets are inlined
     lib: {

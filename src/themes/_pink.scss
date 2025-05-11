@@ -1,0 +1,61 @@
+@use 'sass:map';
+
+/*
+  Pink theme colors
+  These colors are used for the pink theme
+*/
+$color: (
+  primary-50: #fcf3f8,
+  primary-100: #fae9f4,
+  primary-200: #f6d4e8,
+  primary-300: #f0b1d5,
+  primary-400: #e581b8,
+  primary-500: #d95b9d,
+  primary-600: #c73b7e,
+  primary-700: #b82e6c,
+  primary-800: #8e2653,
+  primary-900: #772448,
+  primary-950: #480f28,
+
+  secondary-50: #edfcf3,
+  secondary-100: #d4f7e1,
+  secondary-200: #aceec8,
+  secondary-300: #5bd997,
+  secondary-400: #3ec984,
+  secondary-500: #1bae6a,
+  secondary-600: #0e8d55,
+  secondary-700: #0b7147,
+  secondary-800: #0c5939,
+  secondary-900: #0b4931,
+  secondary-950: #05291c,
+
+  dimmed-50: #f8f7f8,
+  dimmed-100: #f3f0f2,
+  dimmed-200: #e9e1e5,
+  dimmed-300: #d7cad1,
+  dimmed-400: #bea8b4,
+  dimmed-500: #a88c9b,
+  dimmed-600: #907280,
+  dimmed-700: #765b67,
+  dimmed-800: #654f59,
+  dimmed-900: #56454c,
+  dimmed-950: #32252a,
+);
+
+$dark: (
+  chromeBg: map.get($color, primary-600),
+  chromeText: map.get($color, primary-200),
+  text: map.get($color, dimmed-950),
+  link: map.get($color, primary-900),
+  linkHover: map.get($color, secondary-700),
+  pageBg: map.get($color, dimmed-300),
+);
+
+$light: (
+  chromeBg: map.get($color, primary-200),
+  chromeText: map.get($color, primary-900),
+  text: map.get($color, dimmed-800),
+  link: map.get($color, primary-600),
+  linkHover: map.get($color, secondary-400),
+  pageBg: map.get($color, dimmed-50),
+);
