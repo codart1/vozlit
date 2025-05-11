@@ -1,0 +1,140 @@
+// This is our global style for our tampermonkey script
+// It overrides the Xenforo default theme colors
+// and may contain some other styles for our script UI
+
+@use 'sass:color';
+@use 'sass:map';
+
+// Helper function to extract HSL channels from a color
+@function get-hsl-channels($color) {
+  @return (
+    h: color.channel($color, 'hue', $space: hsl),
+    s: color.channel($color, 'saturation', $space: hsl),
+    l: color.channel($color, 'lightness', $space: hsl),
+    a: color.alpha($color)
+  );
+}
+
+// SCSS variable definitions
+$color-primary-50: #fcf3f8;
+$color-primary-100: #fae9f4;
+$color-primary-200: #f6d4e8;
+$color-primary-300: #f0b1d5;
+$color-primary-400: #e581b8;
+$color-primary-500: #d95b9d;
+$color-primary-600: #c73b7e;
+$color-primary-700: #b82e6c;
+$color-primary-800: #8e2653;
+$color-primary-900: #772448;
+$color-primary-950: #480f28;
+
+$color-secondary-50: #edfcf3;
+$color-secondary-100: #d4f7e1;
+$color-secondary-200: #aceec8;
+$color-secondary-300: #5bd997;
+$color-secondary-400: #3ec984;
+$color-secondary-500: #1bae6a;
+$color-secondary-600: #0e8d55;
+$color-secondary-700: #0b7147;
+$color-secondary-800: #0c5939;
+$color-secondary-900: #0b4931;
+$color-secondary-950: #05291c;
+
+$color-dimmed-50: #f8f7f8;
+$color-dimmed-100: #f3f0f2;
+$color-dimmed-200: #e9e1e5;
+$color-dimmed-300: #d7cad1;
+$color-dimmed-400: #bea8b4;
+$color-dimmed-500: #a88c9b;
+$color-dimmed-600: #907280;
+$color-dimmed-700: #765b67;
+$color-dimmed-800: #654f59;
+$color-dimmed-900: #56454c;
+$color-dimmed-950: #32252a;
+
+:root {
+  --color-primary-50: #{$color-primary-50};
+  --color-primary-100: #{$color-primary-100};
+  --color-primary-200: #{$color-primary-200};
+  --color-primary-300: #{$color-primary-300};
+  --color-primary-400: #{$color-primary-400};
+  --color-primary-500: #{$color-primary-500};
+  --color-primary-600: #{$color-primary-600};
+  --color-primary-700: #{$color-primary-700};
+  --color-primary-800: #{$color-primary-800};
+  --color-primary-900: #{$color-primary-900};
+  --color-primary-950: #{$color-primary-950};
+
+  --color-secondary-50: #{$color-secondary-50};
+  --color-secondary-100: #{$color-secondary-100};
+  --color-secondary-200: #{$color-secondary-200};
+  --color-secondary-300: #{$color-secondary-300};
+  --color-secondary-400: #{$color-secondary-400};
+  --color-secondary-500: #{$color-secondary-500};
+  --color-secondary-600: #{$color-secondary-600};
+  --color-secondary-700: #{$color-secondary-700};
+  --color-secondary-800: #{$color-secondary-800};
+  --color-secondary-900: #{$color-secondary-900};
+  --color-secondary-950: #{$color-secondary-950};
+
+  --color-dimmed-50: #{$color-dimmed-50};
+  --color-dimmed-100: #{$color-dimmed-100};
+  --color-dimmed-200: #{$color-dimmed-200};
+  --color-dimmed-300: #{$color-dimmed-300};
+  --color-dimmed-400: #{$color-dimmed-400};
+  --color-dimmed-500: #{$color-dimmed-500};
+  --color-dimmed-600: #{$color-dimmed-600};
+  --color-dimmed-700: #{$color-dimmed-700};
+  --color-dimmed-800: #{$color-dimmed-800};
+  --color-dimmed-900: #{$color-dimmed-900};
+  --color-dimmed-950: #{$color-dimmed-950};
+
+  --main-bg-color: var(--color-primary-600);
+  --main-bg-color-contrast: var(--color-primary-300);
+
+  // #region Xenforo overrides
+
+  // Background chrome color
+  $chrome-bg-channels: get-hsl-channels($color-primary-600);
+  --xf-chromeBg--h: #{map.get($chrome-bg-channels, h)};
+  --xf-chromeBg--s: #{map.get($chrome-bg-channels, s)};
+  --xf-chromeBg--l: #{map.get($chrome-bg-channels, l)};
+  --xf-chromeBg--a: #{map.get($chrome-bg-channels, a)};
+
+  // Text chrome color
+  $chrome-text-channels: get-hsl-channels($color-primary-200);
+  --xf-chromeTextColor--h: #{map.get($chrome-text-channels, h)};
+  --xf-chromeTextColor--s: #{map.get($chrome-text-channels, s)};
+  --xf-chromeTextColor--l: #{map.get($chrome-text-channels, l)};
+  --xf-chromeTextColor--a: #{map.get($chrome-text-channels, a)};
+
+  // Text color
+  $text-channels: get-hsl-channels($color-dimmed-950);
+  --xf-textColor--h: #{map.get($text-channels, h)};
+  --xf-textColor--s: #{map.get($text-channels, s)};
+  --xf-textColor--l: #{map.get($text-channels, l)};
+  --xf-textColor--a: #{map.get($text-channels, a)};
+
+  // Link color
+  $link-channels: get-hsl-channels($color-primary-900);
+  --xf-linkColor--h: #{map.get($link-channels, h)};
+  --xf-linkColor--s: #{map.get($link-channels, s)};
+  --xf-linkColor--l: #{map.get($link-channels, l)};
+  --xf-linkColor--a: #{map.get($link-channels, a)};
+
+  // Link hover color
+  $link-hover-channels: get-hsl-channels($color-secondary-700);
+  --xf-linkHoverColor--h: #{map.get($link-hover-channels, h)};
+  --xf-linkHoverColor--s: #{map.get($link-hover-channels, s)};
+  --xf-linkHoverColor--l: #{map.get($link-hover-channels, l)};
+  --xf-linkHoverColor--a: #{map.get($link-hover-channels, a)};
+
+  // Page background color
+  $page-bg-channels: get-hsl-channels($color-dimmed-300);
+  --xf-pageBg--h: #{map.get($page-bg-channels, h)};
+  --xf-pageBg--s: #{map.get($page-bg-channels, s)};
+  --xf-pageBg--l: #{map.get($page-bg-channels, l)};
+  --xf-pageBg--a: #{map.get($page-bg-channels, a)};
+
+  // #endregion
+}
