@@ -61,12 +61,12 @@ $dark: (
 );
 
 $light: (
-  chromeBg: map.get($color, primary-200),
-  chromeText: map.get($color, primary-900),
-  text: map.get($color, dimmed-800),
-  link: map.get($color, primary-600),
-  linkHover: map.get($color, secondary-400),
-  pageBg: map.get($color, dimmed-50),
+  chromeBg: map.get($color, primary-600),
+  chromeText: map.get($color, primary-200),
+  text: map.get($color, dimmed-950),
+  link: map.get($color, primary-900),
+  linkHover: map.get($color, secondary-700),
+  pageBg: map.get($color, dimmed-200),
   contentBg: map.get($color, dimmed-100),
   contentHighlightBg: map.get($color, dimmed-50),
   textMuted: map.get($color, dimmed-500),
