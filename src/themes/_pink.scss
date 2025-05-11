@@ -52,6 +52,10 @@ $dark: (
   contentBg: map.get($color, dimmed-100),
   contentHighlightBg: map.get($color, dimmed-50),
   textMuted: map.get($color, dimmed-500),
+  textEmphasized: map.get($color, primary-800),
+  textFeature: map.get($color, primary-600),
+  buttonBg: map.get($color, primary-700),
+  buttonTextColor: map.get($color, primary-100),
 );
 
 $light: (
@@ -64,4 +68,8 @@ $light: (
   contentBg: map.get($color, dimmed-100),
   contentHighlightBg: map.get($color, dimmed-50),
   textMuted: map.get($color, dimmed-500),
+  textEmphasized: map.get($color, primary-800),
+  textFeature: map.get($color, primary-600),
+  buttonBg: map.get($color, primary-700),
+  buttonTextColor: map.get($color, primary-100),
 );

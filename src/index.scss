@@ -76,6 +76,30 @@
   --xf-textColorMuted--s: #{map.get($text-muted, s)};
   --xf-textColorMuted--l: #{map.get($text-muted, l)};
   --xf-textColorMuted--a: #{map.get($text-muted, a)};
+
+  $text-emphasized: get-hsl-channels(map.get($theme, textEmphasized));
+  --xf-textColorEmphasized--h: #{map.get($text-emphasized, h)};
+  --xf-textColorEmphasized--s: #{map.get($text-emphasized, s)};
+  --xf-textColorEmphasized--l: #{map.get($text-emphasized, l)};
+  --xf-textColorEmphasized--a: #{map.get($text-emphasized, a)};
+
+  $text-feature: get-hsl-channels(map.get($theme, textFeature));
+  --xf-textColorFeature--h: #{map.get($text-feature, h)};
+  --xf-textColorFeature--s: #{map.get($text-feature, s)};
+  --xf-textColorFeature--l: #{map.get($text-feature, l)};
+  --xf-textColorFeature--a: #{map.get($text-feature, a)};
+
+  $button-bg: get-hsl-channels(map.get($theme, buttonBg));
+  --xf-buttonBg--h: #{map.get($button-bg, h)};
+  --xf-buttonBg--s: #{map.get($button-bg, s)};
+  --xf-buttonBg--l: #{map.get($button-bg, l)};
+  --xf-buttonBg--a: #{map.get($button-bg, a)};
+
+  $button-text: get-hsl-channels(map.get($theme, buttonTextColor));
+  --xf-buttonTextColor--h: #{map.get($button-text, h)};
+  --xf-buttonTextColor--s: #{map.get($button-text, s)};
+  --xf-buttonTextColor--l: #{map.get($button-text, l)};
+  --xf-buttonTextColor--a: #{map.get($button-text, a)};
 }
 
 :root {
