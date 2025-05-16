@@ -18,4 +18,11 @@ document.addEventListener('DOMContentLoaded', () => {
   render(() => <App />, root!);
 });
 
+window.addEventListener('load', () => {
+  // XF.ajax('post', '/index.php?misc/style-variation', { variation: 'default' });
+  if (document.documentElement.getAttribute('data-variation') === 'alternate') {
+    XF.StyleVariation.updateVariation('default');
+  }
+});
+
 document.documentElement.setAttribute('data-theme', 'pink-light');
