@@ -23,6 +23,11 @@
 
 // Mixin to output CSS variables for a theme
 @mixin theme-vars($theme) {
+  // UI specific variables (vl- prefix)
+  --vl-panel-bg: #{map.get($theme, vlPanelBg)};
+  --vl-button-bg: #{map.get($theme, vlButtonBg)};
+  --vl-button-text: #{map.get($theme, vlButtonText)};
+
   $chrome-bg: get-hsl-channels(map.get($theme, chromeBg));
   --xf-chromeBg--h: #{map.get($chrome-bg, h)};
   --xf-chromeBg--s: #{map.get($chrome-bg, s)};
@@ -128,6 +133,11 @@
 
 :root {
   --v-animation-speed: 0.3s;
+  
+  // Default panel styling
+  --vl-panel-bg: rgba(255, 255, 255, 0.98);
+  --vl-button-bg: #f0f0f0;
+  --vl-button-text: #333;
 }
 
 html[data-theme='pink-dark'] {
@@ -154,19 +164,34 @@ html[data-theme='button-blue-light'] {
 
   &-no-pointer {
     pointer-events: none;
+    user-select: none;
   }
   
   &-slide-out {
-    transform: translateY(100%);
+    transform: translateY(10px);
     opacity: 0;
-    transition: transform var(--v-animation-speed) ease,
-      opacity var(--v-animation-speed) ease;
+    visibility: hidden;
+    transition: transform var(--v-animation-speed) cubic-bezier(0.25, 0.1, 0.25, 1),
+      opacity var(--v-animation-speed) cubic-bezier(0.25, 0.1, 0.25, 1),
+      visibility var(--v-animation-speed) cubic-bezier(0.25, 0.1, 0.25, 1);
   }
   &-slide-in {
     transform: translateY(0);
     opacity: 1;
-    transition: transform var(--v-animation-speed) ease,
-      opacity var(--v-animation-speed) ease;
+    visibility: visible;
+    transition: transform var(--v-animation-speed) cubic-bezier(0.25, 0.1, 0.25, 1),
+      opacity var(--v-animation-speed) cubic-bezier(0.25, 0.1, 0.25, 1),
+      visibility var(--v-animation-speed) cubic-bezier(0.25, 0.1, 0.25, 1);
+  }
+  
+  &-flex {
+    display: flex;
+  }
+  
+  &-flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
 // #endregion

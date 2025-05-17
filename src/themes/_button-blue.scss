@@ -60,6 +60,11 @@ $dark: (
   paletteColor3: map.get($color, primary-700),
   paletteAccent1: map.get($color, secondary-400),
   paletteAccent3: map.get($color, secondary-700),
+  
+  // UI specific variables
+  vlPanelBg: rgba(25, 30, 35, 0.95),
+  vlButtonBg: map.get($color, primary-900),
+  vlButtonText: map.get($color, primary-100),
 );
 
 $light: (
@@ -80,4 +85,9 @@ $light: (
   paletteColor3: map.get($color, primary-500),
   paletteAccent1: map.get($color, secondary-200),
   paletteAccent3: map.get($color, secondary-600),
+  
+  // UI specific variables
+  vlPanelBg: rgba(228, 232, 233, 0.95),
+  vlButtonBg: map.get($color, primary-200),
+  vlButtonText: map.get($color, primary-900),
 );
