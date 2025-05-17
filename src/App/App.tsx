@@ -54,8 +54,8 @@ const App: Component = () => {
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
+            width="12"
+            height="12"
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
@@ -93,10 +93,10 @@ const App: Component = () => {
                       class={style['color-preview']}
                       style={{
                         'background-color': theme.previewBg,
-                        'border-top': `4px solid ${theme.previewAccent}`,
+                        'border-top': `2px solid ${theme.previewAccent}`,
                         'box-shadow':
                           theme.id === currentTheme()
-                            ? `0 0 0 2px ${theme.previewAccent}`
+                            ? `0 0 0 1px ${theme.previewAccent}`
                             : '',
                       }}
                     />

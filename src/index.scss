@@ -132,7 +132,7 @@
 }
 
 :root {
-  --v-animation-speed: 0.3s;
+  --v-animation-speed: 0.25s;
   
   // Default panel styling
   --vl-panel-bg: rgba(255, 255, 255, 0.98);
@@ -168,7 +168,7 @@ html[data-theme='button-blue-light'] {
   }
   
   &-slide-out {
-    transform: translateY(10px);
+    transform: translateY(6px);
     opacity: 0;
     visibility: hidden;
     transition: transform var(--v-animation-speed) cubic-bezier(0.25, 0.1, 0.25, 1),
