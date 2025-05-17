@@ -19,7 +19,9 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 window.addEventListener('load', () => {
-  // XF.ajax('post', '/index.php?misc/style-variation', { variation: 'default' });
+  /**
+   * Always make the Xenforo theme the default one. So it's easier for us to override the theme.
+   */
   if (document.documentElement.getAttribute('data-variation') === 'alternate') {
     XF.StyleVariation.updateVariation('default');
   }
