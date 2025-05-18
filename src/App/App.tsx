@@ -1,9 +1,27 @@
 import { createSignal, type Component, createEffect, For } from 'solid-js';
 import style from './App.module.scss';
 
+// Theme constants
+const THEME_STORAGE_KEY = 'voz-lit-theme';
+const DEFAULT_THEME = 'pink-light';
+
+// Helper functions for theme management
+const getThemeFromStorage = (): string => {
+  return localStorage.getItem(THEME_STORAGE_KEY) || DEFAULT_THEME;
+};
+
+const saveThemeToStorage = (theme: string): void => {
+  localStorage.setItem(THEME_STORAGE_KEY, theme);
+};
+
+/**
+ * Set theme as soon as possible to avoid flickering.
+ */
+document.documentElement.setAttribute('data-theme', getThemeFromStorage());
+
 const App: Component = () => {
   const [isOpen, setIsOpen] = createSignal(false);
-  const [currentTheme, setCurrentTheme] = createSignal('pink-light');
+  const [currentTheme, setCurrentTheme] = createSignal(getThemeFromStorage());
 
   const themes = [
     {
@@ -34,14 +52,15 @@ const App: Component = () => {
 
   const setTheme = (theme: string) => {
     document.documentElement.setAttribute('data-theme', theme);
+    saveThemeToStorage(theme);
     setCurrentTheme(theme);
     setIsOpen(false);
   };
 
-  // Get initial theme
+  // Set initial theme on component mount
   createEffect(() => {
-    const theme =
-      document.documentElement.getAttribute('data-theme') || 'pink-light';
+    const theme = getThemeFromStorage();
+    document.documentElement.setAttribute('data-theme', theme);
     setCurrentTheme(theme);
   });
 

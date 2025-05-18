@@ -4,6 +4,7 @@ import { render } from 'solid-js/web';
 import './index.scss';
 import App from './App/App';
 
+
 document.addEventListener('DOMContentLoaded', () => {
   const root = document.createElement('div');
   root.id = 'VozLitRoot';
@@ -26,5 +27,3 @@ window.addEventListener('load', () => {
     XF.StyleVariation.updateVariation('default');
   }
 });
-
-document.documentElement.setAttribute('data-theme', 'pink-light');
