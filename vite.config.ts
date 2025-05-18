@@ -46,7 +46,7 @@ export default defineConfig({
       entry: resolve(__dirname, 'src/index.tsx'),
       formats: ['iife'],
       name: 'SolidUserScript',
-      fileName: () => 'userscript.js',
+      fileName: () => 'vozlit.user.js',
     },
     rollupOptions: {
       output: {
