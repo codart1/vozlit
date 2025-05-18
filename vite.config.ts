@@ -14,8 +14,9 @@ const userscriptHeader = `// ==UserScript==
 // @match        https://voz.vn/*
 // @grant        none
 // @run-at       document-start
+// @updateURL    https://github.com/codart1/vozlit/raw/refs/heads/main/dist/vozlit.user.js
+// @downloadURL  https://github.com/codart1/vozlit/raw/refs/heads/main/dist/vozlit.user.js
 // ==/UserScript==
-
 `;
 
 export default defineConfig({
