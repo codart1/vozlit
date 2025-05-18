@@ -20,6 +20,7 @@
     "vite-plugin-solid": "^2.11.6"
   },
   "dependencies": {
+    "froala-editor": "4.2.1",
     "solid-js": "^1.9.5"
   }
 }

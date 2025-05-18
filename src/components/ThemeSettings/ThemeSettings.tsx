@@ -68,7 +68,7 @@ export const themes: ThemeOption[] = [
 
 interface ThemeSettingsProps {}
 
-const ThemeSettings: Component<ThemeSettingsProps> = () => {
+export const ThemeSettings: Component<ThemeSettingsProps> = () => {
   const [currentTheme, setCurrentTheme] = createSignal(getThemeFromStorage());
 
   const setTheme = (theme: string) => {
@@ -103,7 +103,7 @@ const ThemeSettings: Component<ThemeSettingsProps> = () => {
         </svg>
         Cài đặt giao diện
       </button>
-      
+
       <div class={style['theme-list']}>
         <For each={themes}>
           {(theme) => (
@@ -131,5 +131,3 @@ const ThemeSettings: Component<ThemeSettingsProps> = () => {
     </div>
   );
 };
-
-export default ThemeSettings;

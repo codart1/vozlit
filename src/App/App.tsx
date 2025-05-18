@@ -1,6 +1,10 @@
 import { createSignal, type Component, Show } from 'solid-js';
 import style from './App.module.scss';
-import ThemeSettings, { initializeTheme } from '../components/ThemeSettings/ThemeSettings';
+import {
+  ThemeSettings,
+  initializeTheme,
+} from '../components/ThemeSettings/ThemeSettings';
+import { StickerSetting } from '../components/Stickers/Stickers';
 
 // Initialize theme as soon as possible to avoid flickering
 initializeTheme();
@@ -12,7 +16,7 @@ const App: Component = () => {
     <>
       {/* Floating Toggle Button */}
       <div class={style.bar}>
-        <div 
+        <div
           class={style['toggle-button']}
           onClick={() => setIsDrawerOpen(true)}
           title="Cài đặt VozLit"
@@ -33,17 +37,17 @@ const App: Component = () => {
           </svg>
         </div>
       </div>
-      
+
       {/* Drawer */}
-      <div 
+      <div
         classList={{
-          [style.drawer]: true, 
+          [style.drawer]: true,
           [style.open]: isDrawerOpen(),
         }}
       >
         <div class={style['drawer-header']}>
           <div class={style['drawer-title']}>Cài đặt VozLit</div>
-          <button 
+          <button
             class={style['close-button']}
             onClick={() => setIsDrawerOpen(false)}
           >
@@ -63,18 +67,16 @@ const App: Component = () => {
             </svg>
           </button>
         </div>
-        
+
         <div class={style['drawer-content']}>
           <ThemeSettings />
+          <StickerSetting />
         </div>
       </div>
-      
+
       {/* Overlay to close drawer when clicking outside */}
       <Show when={isDrawerOpen()}>
-        <div 
-          class={style.overlay}
-          onClick={() => setIsDrawerOpen(false)}
-        />
+        <div class={style.overlay} onClick={() => setIsDrawerOpen(false)} />
       </Show>
     </>
   );

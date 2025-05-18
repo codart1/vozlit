@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      froala-editor:
+        specifier: 4.2.1
+        version: 4.2.1
       solid-js:
         specifier: ^1.9.5
         version: 1.9.5
@@ -508,6 +511,9 @@ packages:
   escalade@3.2.0:
     resolution: {integrity: sha512-WUj2qlxaQtO4g6Pq5c29GTcWGDyd8itL8zTlipgECz3JesAiiOKotd8JU6otB3PACgG6xkJUyVhboMS+bje/jA==}
     engines: {node: '>=6'}
+
+  froala-editor@4.2.1:
+    resolution: {integrity: sha512-Ov8XdJpP6X+hernpF89CzkDHBiXEsBzFUX2ftmG2QLw+2ZqiK2RirUbUy2IABxBXZrBzHgzm8GZyZ5rd+cAU5Q==}
 
   fsevents@2.3.3:
     resolution: {integrity: sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw==}
@@ -1241,6 +1247,8 @@ snapshots:
       '@esbuild/win32-x64': 0.24.0
 
   escalade@3.2.0: {}
+
+  froala-editor@4.2.1: {}
 
   fsevents@2.3.3:
     optional: true
