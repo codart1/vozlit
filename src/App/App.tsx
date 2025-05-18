@@ -15,7 +15,7 @@ const App: Component = () => {
         <div 
           class={style['toggle-button']}
           onClick={() => setIsDrawerOpen(true)}
-          title="VozLit Settings"
+          title="Cài đặt VozLit"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -42,7 +42,7 @@ const App: Component = () => {
         }}
       >
         <div class={style['drawer-header']}>
-          <div class={style['drawer-title']}>VozLit Settings</div>
+          <div class={style['drawer-title']}>Cài đặt VozLit</div>
           <button 
             class={style['close-button']}
             onClick={() => setIsDrawerOpen(false)}

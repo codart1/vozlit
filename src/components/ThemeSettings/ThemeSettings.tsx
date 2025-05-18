@@ -42,25 +42,25 @@ export interface ThemeOption {
 export const themes: ThemeOption[] = [
   {
     id: 'pink-light',
-    name: 'Pink Light',
+    name: 'Hồng Sáng',
     previewBg: '#f3f0f2',
     previewAccent: '#eb5889',
   },
   {
     id: 'pink-dark',
-    name: 'Pink Dark',
+    name: 'Hồng Tối',
     previewBg: '#32252a',
     previewAccent: '#eb5889',
   },
   {
     id: 'button-blue-light',
-    name: 'Blue Light',
+    name: 'Xanh Sáng',
     previewBg: '#e4e8e9',
     previewAccent: '#26b3eb',
   },
   {
     id: 'button-blue-dark',
-    name: 'Blue Dark',
+    name: 'Xanh Tối',
     previewBg: '#232729',
     previewAccent: '#26b3eb',
   },
@@ -101,7 +101,7 @@ const ThemeSettings: Component<ThemeSettingsProps> = () => {
           <circle cx="12" cy="12" r="5"></circle>
           <path d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"></path>
         </svg>
-        Theme Settings
+        Cài đặt giao diện
       </button>
       
       <div class={style['theme-list']}>
