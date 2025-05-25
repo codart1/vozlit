@@ -4,7 +4,8 @@ import {
   ThemeSettings,
   initializeTheme,
 } from '../components/ThemeSettings/ThemeSettings';
-import { StickerSetting } from '../components/Stickers/Stickers';
+import { StickerSetting } from '../components/Stickers/StickerSetting';
+import { EditorSticker } from '../components/Stickers/EditorSticker';
 
 // Initialize theme as soon as possible to avoid flickering
 initializeTheme();
@@ -78,6 +79,8 @@ const App: Component = () => {
       <Show when={isDrawerOpen()}>
         <div class={style.overlay} onClick={() => setIsDrawerOpen(false)} />
       </Show>
+
+      <EditorSticker />
     </>
   );
 };
