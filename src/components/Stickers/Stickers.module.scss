@@ -278,3 +278,296 @@
     color: var(--placeholderColor);
   }
 }
+
+/* Sticker size selection popover styles */
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1050;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.sizePopover {
+  position: fixed;
+  z-index: 1051;
+  transform: translate(-50%, -100%);
+  margin-top: -10px;
+}
+
+.popoverContent {
+  background-color: hsla(
+    var(--xf-contentBg--h),
+    var(--xf-contentBg--s),
+    var(--xf-contentBg--l),
+    var(--xf-contentBg--a)
+  );
+  border: 1px solid
+    hsla(
+      var(--xf-borderColor--h, var(--xf-pageBg--h)),
+      var(--xf-borderColor--s, var(--xf-pageBg--s)),
+      calc(var(--xf-borderColor--l, var(--xf-pageBg--l)) - 5%),
+      0.2
+    );
+  border-radius: 4px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+  padding: 10px;
+  min-width: 180px;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    margin-left: -8px;
+    border-width: 8px 8px 0;
+    border-style: solid;
+    border-color: hsla(
+      var(--xf-contentBg--h),
+      var(--xf-contentBg--s),
+      var(--xf-contentBg--l),
+      var(--xf-contentBg--a)
+    ) transparent transparent;
+  }
+}
+
+.popoverHeader {
+  color: hsla(
+    var(--xf-textColorMuted--h),
+    var(--xf-textColorMuted--s),
+    var(--xf-textColorMuted--l),
+    var(--xf-textColorMuted--a)
+  );
+  font-size: 12px;
+  margin-bottom: 8px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid
+    hsla(
+      var(--xf-borderColor--h, var(--xf-pageBg--h)),
+      var(--xf-borderColor--s, var(--xf-pageBg--s)),
+      calc(var(--xf-borderColor--l, var(--xf-pageBg--l)) - 5%),
+      0.2
+    );
+}
+
+.sizeOptions {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.sizeOption {
+  padding: 8px 12px;
+  background-color: hsla(
+    var(--xf-pageBg--h),
+    var(--xf-pageBg--s),
+    var(--xf-pageBg--l),
+    var(--xf-pageBg--a)
+  );
+  border: 1px solid
+    hsla(
+      var(--xf-borderColor--h, var(--xf-pageBg--h)),
+      var(--xf-borderColor--s, var(--xf-pageBg--s)),
+      calc(var(--xf-borderColor--l, var(--xf-pageBg--l)) - 5%),
+      0.2
+    );
+  border-radius: 3px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: hsla(
+    var(--xf-textColor--h),
+    var(--xf-textColor--s),
+    var(--xf-textColor--l),
+    var(--xf-textColor--a)
+  );
+
+  &:hover {
+    background-color: hsla(
+      var(--xf-textColorFeature--h),
+      var(--xf-textColorFeature--s),
+      var(--xf-textColorFeature--l),
+      0.08
+    );
+    color: hsla(
+      var(--xf-textColorFeature--h),
+      var(--xf-textColorFeature--s),
+      var(--xf-textColorFeature--l),
+      var(--xf-textColorFeature--a)
+    );
+  }
+
+  &.active {
+    background-color: hsla(
+      var(--xf-textColorFeature--h),
+      var(--xf-textColorFeature--s),
+      var(--xf-textColorFeature--l),
+      0.15
+    );
+    border-color: hsla(
+      var(--xf-textColorFeature--h),
+      var(--xf-textColorFeature--s),
+      var(--xf-textColorFeature--l),
+      0.4
+    );
+    color: hsla(
+      var(--xf-textColorFeature--h),
+      var(--xf-textColorFeature--s),
+      var(--xf-textColorFeature--l),
+      var(--xf-textColorFeature--a)
+    );
+    font-weight: 600;
+  }
+}
+
+.sizeModal {
+  position: fixed;
+  z-index: 1051;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 350px;
+}
+
+.modalContent {
+  background-color: hsla(
+    var(--xf-contentBg--h),
+    var(--xf-contentBg--s),
+    var(--xf-contentBg--l),
+    var(--xf-contentBg--a)
+  );
+  border: 1px solid
+    hsla(
+      var(--xf-borderColor--h, var(--xf-pageBg--h)),
+      var(--xf-borderColor--s, var(--xf-pageBg--s)),
+      calc(var(--xf-borderColor--l, var(--xf-pageBg--l)) - 5%),
+      0.2
+    );
+  border-radius: 6px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  padding: 15px;
+  animation: modalFadeIn 0.2s ease-out;
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modalHeader {
+  font-weight: 600;
+  font-size: 16px;
+  color: hsla(
+    var(--xf-textColor--h),
+    var(--xf-textColor--s),
+    var(--xf-textColor--l),
+    var(--xf-textColor--a)
+  );
+  margin-bottom: 15px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid
+    hsla(
+      var(--xf-borderColor--h, var(--xf-pageBg--h)),
+      var(--xf-borderColor--s, var(--xf-pageBg--s)),
+      calc(var(--xf-borderColor--l, var(--xf-pageBg--l)) - 5%),
+      0.2
+    );
+}
+
+.previewArea {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  background-color: hsla(
+    var(--xf-pageBg--h),
+    var(--xf-pageBg--s),
+    var(--xf-pageBg--l),
+    var(--xf-pageBg--a)
+  );
+  border-radius: 4px;
+  margin-bottom: 15px;
+  min-height: 120px;
+}
+
+.stickerPreview {
+  max-width: 100%;
+  max-height: 200px;
+  object-fit: contain;
+  transition: width 0.2s ease;
+}
+
+.modalActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.cancelButton, .confirmButton {
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.cancelButton {
+  background-color: transparent;
+  border: 1px solid
+    hsla(
+      var(--xf-borderColor--h, var(--xf-pageBg--h)),
+      var(--xf-borderColor--s, var(--xf-pageBg--s)),
+      calc(var(--xf-borderColor--l, var(--xf-pageBg--l)) - 5%),
+      0.3
+    );
+  color: hsla(
+    var(--xf-textColorMuted--h),
+    var(--xf-textColorMuted--s),
+    var(--xf-textColorMuted--l),
+    var(--xf-textColorMuted--a)
+  );
+
+  &:hover {
+    background-color: hsla(
+      var(--xf-pageBg--h),
+      var(--xf-pageBg--s),
+      calc(var(--xf-pageBg--l) - 5%),
+      var(--xf-pageBg--a)
+    );
+  }
+}
+
+.confirmButton {
+  background-color: hsla(
+    var(--xf-textColorFeature--h),
+    var(--xf-textColorFeature--s),
+    var(--xf-textColorFeature--l),
+    0.8
+  );
+  border: none;
+  color: #fff;
+
+  &:hover {
+    background-color: hsla(
+      var(--xf-textColorFeature--h),
+      var(--xf-textColorFeature--s),
+      var(--xf-textColorFeature--l),
+      1
+    );
+    box-shadow: 0 2px 5px hsla(
+      var(--xf-textColorFeature--h),
+      var(--xf-textColorFeature--s),
+      calc(var(--xf-textColorFeature--l) - 20%),
+      0.3
+    );
+  }
+}

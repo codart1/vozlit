@@ -8,16 +8,45 @@ interface StickersProps {
   editor: FE;
 }
 
+// Define sticker width options
+const STICKER_WIDTHS = [
+  { label: 'Default', value: '' },
+  { label: '64px', value: '64px' },
+  { label: '128px', value: '128px' },
+  { label: '512px', value: '512px' },
+];
+
 export function Stickers(props: StickersProps) {
   const [activeTab, setActiveTab] = createSignal(0);
+  const [selectedSticker, setSelectedSticker] = createSignal<string | null>(
+    null
+  );
+  const [selectedWidth, setSelectedWidth] = createSignal(
+    STICKER_WIDTHS[0].value
+  ); // Default to first option
+  const [showModal, setShowModal] = createSignal(false);
 
   const activeCollection = () => collections[activeTab()];
 
-  const insertSticker = (url: string) => {
+  const insertSticker = (url: string, width?: string) => {
+    const styleAttr = width ? `style="width: ${width};"` : '';
     props.editor.html.insert(
-      `<img src="${url}" alt="vozlit-sticker" style="width: 512px;" />`
+      `<img src="${url}" alt="vozlit-sticker" ${styleAttr} />`
     );
     // props.editor.events.trigger('contentChanged');
+    closeModal();
+  };
+
+  const handleStickerClick = (url: string, event: MouseEvent) => {
+    event.stopPropagation();
+    setSelectedSticker(url);
+    setSelectedWidth(STICKER_WIDTHS[0].value); // Reset to default width
+    setShowModal(true);
+  };
+
+  const closeModal = () => {
+    setSelectedSticker(null);
+    setShowModal(false);
   };
 
   // Function to truncate collection name if it exceeds 30 characters
@@ -71,12 +100,65 @@ export function Stickers(props: StickersProps) {
             {(sticker) => (
               <div
                 class={styles.stickerItem}
-                onClick={() => insertSticker(sticker.url)}
+                onClick={(e) => handleStickerClick(sticker.url, e)}
               >
                 <img src={sticker.url} alt={sticker.id} />
               </div>
             )}
           </For>
+        </div>
+      </Show>
+
+      {/* Size selection modal */}
+      <Show when={showModal()}>
+        <div class={styles.backdrop} onClick={closeModal}></div>
+        <div class={styles.sizeModal}>
+          <div class={styles.modalContent}>
+            <div class={styles.modalHeader}>Select sticker size</div>
+
+            <div class={styles.previewArea}>
+              <img
+                src={selectedSticker() || ''}
+                alt="Sticker preview"
+                class={styles.stickerPreview}
+                style={{ width: selectedWidth() || 'auto' }}
+              />
+            </div>
+
+            <div class={styles.sizeOptions}>
+              <For each={STICKER_WIDTHS}>
+                {(option) => (
+                  <button
+                    class={`${styles.sizeOption} ${
+                      selectedWidth() === option.value ? styles.active : ''
+                    }`}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      setSelectedWidth(option.value);
+                    }}
+                  >
+                    {option.label}
+                  </button>
+                )}
+              </For>
+            </div>
+
+            <div class={styles.modalActions}>
+              <button class={styles.cancelButton} onClick={closeModal}>
+                Cancel
+              </button>
+              <button
+                class={styles.confirmButton}
+                onClick={(e) => {
+                  e.preventDefault();
+                  return insertSticker(selectedSticker()!, selectedWidth());
+                }}
+              >
+                Confirm
+              </button>
+            </div>
+          </div>
         </div>
       </Show>
     </div>
