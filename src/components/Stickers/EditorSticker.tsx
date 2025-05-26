@@ -1,6 +1,7 @@
 import type FE from 'froala-editor';
 import { createSignal, For } from 'solid-js';
 import { Portal } from 'solid-js/web';
+import { Stickers } from './Stickers';
 
 declare global {
   interface FroalaEditorStatic {
@@ -13,17 +14,17 @@ export function EditorSticker() {
   const froalaInstances = useFroalaInstances();
   return (
     <For each={froalaInstances()}>
-      {(editor) => <Stickers editor={editor} />}
+      {(editor) => <StickerPortal editor={editor} />}
     </For>
   );
 }
 
-function Stickers(props: { editor: FE }) {
+function StickerPortal(props: { editor: FE }) {
   const mainEl = props.editor.$el[0];
   const boxParent = mainEl.closest('.message-editorWrapper');
   return (
     <Portal mount={boxParent}>
-      <h1>Stickers</h1>
+      <Stickers editor={props.editor} />
     </Portal>
   );
 }

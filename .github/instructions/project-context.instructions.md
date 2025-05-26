@@ -11,7 +11,12 @@ Tech stack:
 - solidjs
 - vite
 - tampermonkey
+- css modules (support by vite)
 
 We modify the build step to always output a single script, all of the assets are bundled into the script (css, js).
 
-- Our extension serve mainly Vietnamese users, so we use Vietnamese as the main language.
+- Our extension will provide custom features for the forum, such as:
+  - Custom stickers
+  - Custom themes
+- For custom features that show some UI, we use solidjs to build the UI. Always try to match the current color themes (utilizing predefined css variable from the root `index.css`) and maintain a clean and aesthetic design.
+ 
