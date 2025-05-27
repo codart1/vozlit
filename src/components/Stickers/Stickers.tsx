@@ -3,6 +3,7 @@ import { createSignal, For, Show } from 'solid-js';
 import { collections } from './collections';
 import { StickerCollection } from './types';
 import styles from './Stickers.module.scss';
+import { Button } from '../../ui/button';
 
 interface StickersProps {
   editor: FE;
@@ -13,7 +14,6 @@ const STICKER_WIDTHS = [
   { label: 'Default', value: '' },
   { label: '64px', value: '64px' },
   { label: '128px', value: '128px' },
-  { label: '512px', value: '512px' },
 ];
 
 export function Stickers(props: StickersProps) {
@@ -145,18 +145,25 @@ export function Stickers(props: StickersProps) {
             </div>
 
             <div class={styles.modalActions}>
-              <button class={styles.cancelButton} onClick={closeModal}>
+              <Button 
+                variant="cancel" 
+                size="sm" 
+                onClick={closeModal}
+                class={styles.actionButton}
+              >
                 Cancel
-              </button>
-              <button
-                class={styles.confirmButton}
+              </Button>
+              <Button
+                variant="primary"
+                size="sm"
                 onClick={(e) => {
                   e.preventDefault();
                   return insertSticker(selectedSticker()!, selectedWidth());
                 }}
+                class={styles.actionButton}
               >
                 Confirm
-              </button>
+              </Button>
             </div>
           </div>
         </div>

@@ -1,8 +1,134 @@
 .btn {
-  background-color: red;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  font-weight: 500;
   cursor: pointer;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+  
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  &.fullWidth {
+    width: 100%;
+  }
+
+  &.btn-sm {
+    padding: 6px 12px;
+    font-size: 0.875rem;
+  }
+
+  &.btn-md {
+    padding: 8px 16px;
+    font-size: 0.95rem;
+  }
+
+  &.btn-lg {
+    padding: 10px 20px;
+    font-size: 1rem;
+  }
+
+  &.btn-primary {
+    background-color: hsla(
+      var(--xf-textColorFeature--h),
+      var(--xf-textColorFeature--s),
+      var(--xf-textColorFeature--l),
+      0.8
+    );
+    color: #fff;
+
+    &:hover:not(:disabled) {
+      background-color: hsla(
+        var(--xf-textColorFeature--h),
+        var(--xf-textColorFeature--s),
+        var(--xf-textColorFeature--l),
+        1
+      );
+      box-shadow: 0 2px 5px hsla(
+        var(--xf-textColorFeature--h),
+        var(--xf-textColorFeature--s),
+        calc(var(--xf-textColorFeature--l) - 20%),
+        0.3
+      );
+    }
+  }
+
+  &.btn-secondary {
+    background-color: hsla(
+      var(--xf-pageBg--h),
+      var(--xf-pageBg--s),
+      var(--xf-pageBg--l),
+      var(--xf-pageBg--a)
+    );
+    border-color: hsla(
+      var(--xf-borderColor--h, var(--xf-pageBg--h)),
+      var(--xf-borderColor--s, var(--xf-pageBg--s)),
+      calc(var(--xf-borderColor--l, var(--xf-pageBg--l)) - 5%),
+      0.2
+    );
+    color: hsla(
+      var(--xf-textColor--h),
+      var(--xf-textColor--s),
+      var(--xf-textColor--l),
+      var(--xf-textColor--a)
+    );
+
+    &:hover:not(:disabled) {
+      background-color: hsla(
+        var(--xf-pageBg--h),
+        var(--xf-pageBg--s),
+        calc(var(--xf-pageBg--l) - 3%),
+        var(--xf-pageBg--a)
+      );
+    }
+  }
+
+  &.btn-cancel {
+    background-color: transparent;
+    border-color: hsla(
+      var(--xf-borderColor--h, var(--xf-pageBg--h)),
+      var(--xf-borderColor--s, var(--xf-pageBg--s)),
+      calc(var(--xf-borderColor--l, var(--xf-pageBg--l)) - 5%),
+      0.3
+    );
+    color: hsla(
+      var(--xf-textColorMuted--h),
+      var(--xf-textColorMuted--s),
+      var(--xf-textColorMuted--l),
+      var(--xf-textColorMuted--a)
+    );
+
+    &:hover:not(:disabled) {
+      background-color: hsla(
+        var(--xf-pageBg--h),
+        var(--xf-pageBg--s),
+        calc(var(--xf-pageBg--l) - 5%),
+        var(--xf-pageBg--a)
+      );
+    }
+  }
+
+  &.btn-danger {
+    background-color: hsla(0, 80%, 60%, 0.9);
+    color: white;
+
+    &:hover:not(:disabled) {
+      background-color: hsla(0, 80%, 55%, 1);
+      box-shadow: 0 2px 5px hsla(0, 80%, 40%, 0.3);
+    }
+  }
+  
+  &.btn-success {
+    background-color: hsla(145, 63%, 42%, 0.9);
+    color: white;
+
+    &:hover:not(:disabled) {
+      background-color: hsla(145, 63%, 42%, 1);
+      box-shadow: 0 2px 5px hsla(145, 63%, 30%, 0.3);
+    }
+  }
 }
