@@ -1,0 +1,17 @@
+.actionButtons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 20px;
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px solid hsla(
+    var(--xf-borderColor--h, var(--xf-pageBg--h)),
+    var(--xf-borderColor--s, var(--xf-pageBg--s)),
+    calc(var(--xf-borderColor--l, var(--xf-pageBg--l)) - 5%),
+    0.15
+  );
+}
+
+.actionButton {
+  min-width: 80px;
+}

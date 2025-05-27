@@ -1,9 +1,10 @@
 import type FE from 'froala-editor';
 import { createSignal, For, Show } from 'solid-js';
+import { Modal } from '../../ui';
 import { collections } from './collections';
-import { StickerCollection } from './types';
 import styles from './Stickers.module.scss';
-import { Button } from '../../ui/button';
+import { StickerSizeModal } from './StickerSizeModal';
+import { StickerCollection } from './types';
 
 interface StickersProps {
   editor: FE;
@@ -21,14 +22,14 @@ export function Stickers(props: StickersProps) {
   const [selectedSticker, setSelectedSticker] = createSignal<string | null>(
     null
   );
-  const [selectedWidth, setSelectedWidth] = createSignal(
-    STICKER_WIDTHS[0].value
-  ); // Default to first option
   const [showModal, setShowModal] = createSignal(false);
 
   const activeCollection = () => collections[activeTab()];
 
-  const insertSticker = (url: string, width?: string) => {
+  const insertSticker = (width?: string) => {
+    const url = selectedSticker();
+    if (!url) return;
+
     const styleAttr = width ? `style="width: ${width};"` : '';
     props.editor.html.insert(
       `<img src="${url}" alt="vozlit-sticker" ${styleAttr} />`
@@ -40,7 +41,6 @@ export function Stickers(props: StickersProps) {
   const handleStickerClick = (url: string, event: MouseEvent) => {
     event.stopPropagation();
     setSelectedSticker(url);
-    setSelectedWidth(STICKER_WIDTHS[0].value); // Reset to default width
     setShowModal(true);
   };
 
@@ -109,65 +109,21 @@ export function Stickers(props: StickersProps) {
         </div>
       </Show>
 
-      {/* Size selection modal */}
-      <Show when={showModal()}>
-        <div class={styles.backdrop} onClick={closeModal}></div>
-        <div class={styles.sizeModal}>
-          <div class={styles.modalContent}>
-            <div class={styles.modalHeader}>Select sticker size</div>
-
-            <div class={styles.previewArea}>
-              <img
-                src={selectedSticker() || ''}
-                alt="Sticker preview"
-                class={styles.stickerPreview}
-                style={{ width: selectedWidth() || 'auto' }}
-              />
-            </div>
-
-            <div class={styles.sizeOptions}>
-              <For each={STICKER_WIDTHS}>
-                {(option) => (
-                  <button
-                    class={`${styles.sizeOption} ${
-                      selectedWidth() === option.value ? styles.active : ''
-                    }`}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      e.stopPropagation();
-                      setSelectedWidth(option.value);
-                    }}
-                  >
-                    {option.label}
-                  </button>
-                )}
-              </For>
-            </div>
-
-            <div class={styles.modalActions}>
-              <Button 
-                variant="cancel" 
-                size="sm" 
-                onClick={closeModal}
-                class={styles.actionButton}
-              >
-                Cancel
-              </Button>
-              <Button
-                variant="primary"
-                size="sm"
-                onClick={(e) => {
-                  e.preventDefault();
-                  return insertSticker(selectedSticker()!, selectedWidth());
-                }}
-                class={styles.actionButton}
-              >
-                Confirm
-              </Button>
-            </div>
-          </div>
-        </div>
-      </Show>
+      <Modal
+        isOpen={showModal()}
+        onClose={closeModal}
+        size="sm"
+        position="center"
+        title="Select sticker size"
+      >
+        <StickerSizeModal
+          stickerUrl={selectedSticker() || ''}
+          options={STICKER_WIDTHS}
+          onConfirm={insertSticker}
+          onCancel={closeModal}
+          initialWidth={STICKER_WIDTHS[0].value}
+        />
+      </Modal>
     </div>
   );
 }

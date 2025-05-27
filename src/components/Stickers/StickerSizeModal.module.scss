@@ -1,0 +1,101 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.previewArea {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  background-color: hsla(
+    var(--xf-pageBg--h),
+    var(--xf-pageBg--s),
+    var(--xf-pageBg--l),
+    var(--xf-pageBg--a)
+  );
+  border-radius: 4px;
+  margin-bottom: 15px;
+  min-height: 120px;
+}
+
+.stickerPreview {
+  max-width: 100%;
+  max-height: 200px;
+  object-fit: contain;
+  transition: width 0.2s ease;
+}
+
+.sizeOptions {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+}
+
+.sizeOption {
+  padding: 8px 12px;
+  background-color: hsla(
+    var(--xf-pageBg--h),
+    var(--xf-pageBg--s),
+    var(--xf-pageBg--l),
+    var(--xf-pageBg--a)
+  );
+  border: 1px solid
+    hsla(
+      var(--xf-borderColor--h, var(--xf-pageBg--h)),
+      var(--xf-borderColor--s, var(--xf-pageBg--s)),
+      calc(var(--xf-borderColor--l, var(--xf-pageBg--l)) - 5%),
+      0.2
+    );
+  border-radius: 3px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: hsla(
+    var(--xf-textColor--h),
+    var(--xf-textColor--s),
+    var(--xf-textColor--l),
+    var(--xf-textColor--a)
+  );
+
+  &:hover {
+    background-color: hsla(
+      var(--xf-textColorFeature--h),
+      var(--xf-textColorFeature--s),
+      var(--xf-textColorFeature--l),
+      0.08
+    );
+    color: hsla(
+      var(--xf-textColorFeature--h),
+      var(--xf-textColorFeature--s),
+      var(--xf-textColorFeature--l),
+      var(--xf-textColorFeature--a)
+    );
+  }
+
+  &.active {
+    background-color: hsla(
+      var(--xf-textColorFeature--h),
+      var(--xf-textColorFeature--s),
+      var(--xf-textColorFeature--l),
+      0.15
+    );
+    border-color: hsla(
+      var(--xf-textColorFeature--h),
+      var(--xf-textColorFeature--s),
+      var(--xf-textColorFeature--l),
+      0.4
+    );
+    color: hsla(
+      var(--xf-textColorFeature--h),
+      var(--xf-textColorFeature--s),
+      var(--xf-textColorFeature--l),
+      var(--xf-textColorFeature--a)
+    );
+    font-weight: 600;
+  }
+}
+
+/* Action buttons are now provided by the reusable ActionButtons component */

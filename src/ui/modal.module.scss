@@ -1,0 +1,108 @@
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1050;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal {
+  position: fixed;
+  z-index: 1051;
+  border-radius: 6px;
+  
+  &.position-center {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  &.position-top {
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  &.modal-sm {
+    width: 90%;
+    max-width: 300px;
+  }
+  
+  &.modal-md {
+    width: 90%;
+    max-width: 450px;
+  }
+  
+  &.modal-lg {
+    width: 90%;
+    max-width: 650px;
+  }
+}
+
+.modalContent {
+  background-color: hsla(
+    var(--xf-contentBg--h),
+    var(--xf-contentBg--s),
+    var(--xf-contentBg--l),
+    var(--xf-contentBg--a)
+  );
+  border: 1px solid
+    hsla(
+      var(--xf-borderColor--h, var(--xf-pageBg--h)),
+      var(--xf-borderColor--s, var(--xf-pageBg--s)),
+      calc(var(--xf-borderColor--l, var(--xf-pageBg--l)) - 5%),
+      0.2
+    );
+  border-radius: 6px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  padding: 15px;
+  animation: modalFadeIn 0.2s ease-out;
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modalHeader {
+  font-weight: 600;
+  font-size: 16px;
+  color: hsla(
+    var(--xf-textColor--h),
+    var(--xf-textColor--s),
+    var(--xf-textColor--l),
+    var(--xf-textColor--a)
+  );
+  margin-bottom: 15px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid
+    hsla(
+      var(--xf-borderColor--h, var(--xf-pageBg--h)),
+      var(--xf-borderColor--s, var(--xf-pageBg--s)),
+      calc(var(--xf-borderColor--l, var(--xf-pageBg--l)) - 5%),
+      0.2
+    );
+}
+
+.modalBody {
+  position: relative;
+}
+
+.modalFooter {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid hsla(
+    var(--xf-borderColor--h, var(--xf-pageBg--h)),
+    var(--xf-borderColor--s, var(--xf-pageBg--s)),
+    calc(var(--xf-borderColor--l, var(--xf-pageBg--l)) - 5%),
+    0.15
+  );
+}
