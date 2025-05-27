@@ -22,9 +22,11 @@
     );
   padding: 10px;
   width: 100%; // Adapt to full width of parent container
-  max-height: 400px;
-  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
   margin-top: 10px;
+  max-height: 400px; // Keep the max height constraint
+  overflow: hidden; // Changed from overflow-y: auto
 }
 
 .header {
@@ -49,8 +51,6 @@
   flex-wrap: nowrap;
   overflow-x: auto;
   padding-bottom: 2px;
-  position: sticky;
-  top: 0;
   background-color: hsla(
     var(--xf-contentBg--h),
     var(--xf-contentBg--s),
@@ -58,9 +58,7 @@
     var(--xf-contentBg--a)
   );
   z-index: 1;
-  box-shadow: 0 3px 5px -3px hsla(var(--xf-pageBg--h), var(--xf-pageBg--s), calc(var(
-            --xf-pageBg--l
-          ) * 0.8), 0.15);
+  flex-shrink: 0; // Prevent the tabs from shrinking
 
   /* Hide scrollbar for Chrome, Safari and Opera */
   &::-webkit-scrollbar {
@@ -237,6 +235,27 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.stickerContent {
+  overflow-y: auto;
+  flex-grow: 1;
+  padding-right: 5px; // Add some padding for the scrollbar
+
+  /* Customize scrollbar */
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: hsla(
+      var(--xf-textColorMuted--h),
+      var(--xf-textColorMuted--s),
+      var(--xf-textColorMuted--l),
+      0.3
+    );
+    border-radius: 3px;
+  }
 }
 
 .stickerGrid {

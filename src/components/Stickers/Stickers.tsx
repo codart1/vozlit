@@ -91,23 +91,25 @@ export function Stickers(props: StickersProps) {
         </For>
       </div>
 
-      <Show
-        when={activeCollection().stickers.length > 0}
-        fallback={<div>No stickers found</div>}
-      >
-        <div class={styles.stickerGrid}>
-          <For each={activeCollection().stickers}>
-            {(sticker) => (
-              <div
-                class={styles.stickerItem}
-                onClick={(e) => handleStickerClick(sticker.url, e)}
-              >
-                <img src={sticker.url} alt={sticker.id} />
-              </div>
-            )}
-          </For>
-        </div>
-      </Show>
+      <div class={styles.stickerContent}>
+        <Show
+          when={activeCollection().stickers.length > 0}
+          fallback={<div>No stickers found</div>}
+        >
+          <div class={styles.stickerGrid}>
+            <For each={activeCollection().stickers}>
+              {(sticker) => (
+                <div
+                  class={styles.stickerItem}
+                  onClick={(e) => handleStickerClick(sticker.url, e)}
+                >
+                  <img src={sticker.url} alt={sticker.id} />
+                </div>
+              )}
+            </For>
+          </div>
+        </Show>
+      </div>
 
       <Modal
         isOpen={showModal()}
