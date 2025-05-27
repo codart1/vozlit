@@ -4,9 +4,7 @@ import {
   ThemeSettings,
   initializeTheme,
 } from '../components/ThemeSettings/ThemeSettings';
-import { StickerSetting } from '../components/Stickers/StickerSetting';
 import { EditorSticker } from '../components/Stickers/EditorSticker';
-import { ModalExamples } from '../components/UI-Examples';
 
 // Initialize theme as soon as possible to avoid flickering
 initializeTheme();
@@ -72,8 +70,6 @@ const App: Component = () => {
 
         <div class={style['drawer-content']}>
           <ThemeSettings />
-          <StickerSetting />
-          <ModalExamples />
         </div>
       </div>
 

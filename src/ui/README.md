@@ -140,5 +140,3 @@ The `Tabs` component is highly customizable:
 - **Custom Content**: Flexible content rendering with fallbacks
 - **Active Indicator**: Option to show a pulsing indicator on active tabs
 - **Label Truncation**: Automatically handles long tab labels
-
-For more examples, see `src/components/UI-Examples/TabsExample.tsx`.
