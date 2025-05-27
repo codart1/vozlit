@@ -1,5 +1,5 @@
-import { ActionButtons, ActionButtonsProps } from './action-buttons';
-import { Modal, ModalProps } from './modal';
+import { ActionButtons, ActionButtonsProps } from '../action-buttons';
+import { Modal, ModalProps } from '../modal';
 
 export interface ActionModalProps extends Omit<ModalProps, 'footer'> {
   onCancel: (e?: MouseEvent) => void;

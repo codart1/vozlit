@@ -1,5 +1,5 @@
 import { JSX } from 'solid-js';
-import { Button } from './button';
+import { Button } from '../button';
 import styles from './action-buttons.module.scss';
 
 export interface ActionButtonsProps {
