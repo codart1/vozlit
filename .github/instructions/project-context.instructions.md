@@ -20,6 +20,7 @@ We modify the build step to always output a single script, all of the assets are
   - Custom themes
 - For custom features that show some UI, we use solidjs to build the UI. Always try to match the current color themes (utilizing predefined css variable from the root `index.css`) and maintain a clean and aesthetic design.
 - We should prefer extracting the UI components into reusable components, make our code more modular and maintainable. Also ensure the conssistency of the UI across different features.
+- Don't create too many variants for a reusable component, only create variants that we acctually use in the project.
 
 ## SolidJS notes:
 

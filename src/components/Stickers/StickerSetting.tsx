@@ -1,30 +1,44 @@
-import { For } from 'solid-js';
+import { For, createSignal } from 'solid-js';
 import { collections } from './collections';
 import styles from './StickerSetting.module.scss';
+import { Tabs, TabItem } from '../../ui';
 
 export function StickerSetting() {
+  const [activeTabIndex, setActiveTabIndex] = createSignal(0);
+  
+  // Create tab items from collections
+  const collectionTabs: TabItem[] = collections.map((collection, index) => ({
+    id: `collection-${index}`, // Generate id from index since it's not in the structure
+    label: collection.name,
+    icon: collection.stickers[0]?.url, // Use the first sticker as the icon
+    content: (
+      <div class={styles.collectionContent}>
+        <div class={styles.stickerGrid}>
+          <For each={collection.stickers}>
+            {(sticker) => (
+              <div class={styles.stickerItem}>
+                <img src={sticker.url} alt={sticker.id} />
+              </div>
+            )}
+          </For>
+        </div>
+      </div>
+    )
+  }));
+  
   return (
     <div class={styles.container}>
       <h2>Sticker Collections</h2>
       
-      <div class={styles.collectionList}>
-        <For each={collections}>
-          {(collection) => (
-            <div class={styles.collectionItem}>
-              <div class={styles.collectionName}>{collection.name}</div>
-              <div class={styles.previewRow}>
-                <For each={collection.stickers.slice(0, 5)}>
-                  {(sticker) => (
-                    <div class={styles.previewSticker}>
-                      <img src={sticker.url} alt={sticker.id} />
-                    </div>
-                  )}
-                </For>
-              </div>
-            </div>
-          )}
-        </For>
-      </div>
+      <Tabs
+        tabs={collectionTabs}
+        defaultActiveIndex={0}
+        onTabChange={setActiveTabIndex}
+        showActiveIndicator={true}
+        variant="pills"
+        maxLabelLength={20}
+        contentHeight="300px"
+      />
     </div>
   );
 }

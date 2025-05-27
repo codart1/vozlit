@@ -25,8 +25,6 @@
   display: flex;
   flex-direction: column;
   margin-top: 10px;
-  max-height: 400px; // Keep the max height constraint
-  overflow: hidden; // Changed from overflow-y: auto
 }
 
 .header {
@@ -36,205 +34,6 @@
   margin-bottom: 10px;
   color: var(--primaryColor);
   font-weight: bold;
-}
-
-.tabs {
-  display: flex;
-  border-bottom: 1px solid
-    hsla(
-      var(--xf-borderColor--h, var(--xf-pageBg--h)),
-      var(--xf-borderColor--s, var(--xf-pageBg--s)),
-      calc(var(--xf-borderColor--l, var(--xf-pageBg--l)) - 5%),
-      0.2
-    );
-  margin-bottom: 15px;
-  flex-wrap: nowrap;
-  overflow-x: auto;
-  padding-bottom: 2px;
-  background-color: hsla(
-    var(--xf-contentBg--h),
-    var(--xf-contentBg--s),
-    var(--xf-contentBg--l),
-    var(--xf-contentBg--a)
-  );
-  z-index: 1;
-  flex-shrink: 0; // Prevent the tabs from shrinking
-
-  /* Hide scrollbar for Chrome, Safari and Opera */
-  &::-webkit-scrollbar {
-    height: 3px;
-  }
-
-  /* Handle */
-  &::-webkit-scrollbar-thumb {
-    background: hsla(
-      var(--xf-textColorMuted--h),
-      var(--xf-textColorMuted--s),
-      var(--xf-textColorMuted--l),
-      0.3
-    );
-    border-radius: 3px;
-  }
-}
-
-.tab {
-  padding: 8px 12px;
-  cursor: pointer;
-  background: transparent;
-  border: none;
-  color: var(
-    --secondaryColor,
-    hsla(
-      var(--xf-textColorMuted--h),
-      var(--xf-textColorMuted--s),
-      var(--xf-textColorMuted--l),
-      var(--xf-textColorMuted--a)
-    )
-  );
-  border-bottom: 2px solid transparent;
-  white-space: nowrap;
-  position: relative;
-  transition: all 0.2s ease;
-
-  &:hover {
-    color: hsla(
-      var(--xf-textColorFeature--h),
-      var(--xf-textColorFeature--s),
-      var(--xf-textColorFeature--l),
-      var(--xf-textColorFeature--a)
-    );
-  }
-
-  &.active {
-    border-bottom: 2px solid
-      hsla(
-        var(--xf-textColorFeature--h),
-        var(--xf-textColorFeature--s),
-        var(--xf-textColorFeature--l),
-        var(--xf-textColorFeature--a)
-      );
-    color: hsla(
-      var(--xf-textColorFeature--h),
-      var(--xf-textColorFeature--s),
-      var(--xf-textColorFeature--l),
-      var(--xf-textColorFeature--a)
-    );
-    background-color: hsla(
-      var(--xf-textColorFeature--h),
-      var(--xf-textColorFeature--s),
-      var(--xf-textColorFeature--l),
-      0.08
-    );
-    font-weight: 600;
-
-    .tabIcon {
-      transform: scale(1.1);
-      box-shadow: 0 0 0 2px
-        hsla(
-          var(--xf-textColorFeature--h),
-          var(--xf-textColorFeature--s),
-          var(--xf-textColorFeature--l),
-          0.3
-        );
-    }
-  }
-}
-
-.tabContent {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  position: relative;
-  padding: 2px 0;
-}
-
-.tabIconWrapper {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.tabIcon {
-  width: 24px;
-  height: 24px;
-  object-fit: contain;
-  border-radius: 4px;
-  transition: all 0.2s ease;
-  border: 1px solid
-    hsla(
-      var(--xf-borderColor--h, var(--xf-pageBg--h)),
-      var(--xf-borderColor--s, var(--xf-pageBg--s)),
-      var(--xf-borderColor--l, var(--xf-pageBg--l)),
-      0.2
-    );
-}
-
-.activeIndicator {
-  position: absolute;
-  width: 8px;
-  height: 8px;
-  background-color: hsla(
-    var(--xf-paletteAccent2--h),
-    var(--xf-paletteAccent2--s),
-    var(--xf-paletteAccent2--l),
-    var(--xf-paletteAccent2--a)
-  );
-  border-radius: 50%;
-  top: -2px;
-  right: -2px;
-  border: 2px solid
-    hsla(
-      var(--xf-contentBg--h),
-      var(--xf-contentBg--s),
-      var(--xf-contentBg--l),
-      var(--xf-contentBg--a)
-    );
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
-  animation: pulseEffect 1.5s infinite ease-in-out;
-}
-
-@keyframes pulseEffect {
-  0% {
-    transform: scale(0.8);
-    opacity: 0.8;
-    box-shadow: 0 0 0 0
-      hsla(
-        var(--xf-paletteAccent2--h),
-        var(--xf-paletteAccent2--s),
-        var(--xf-paletteAccent2--l),
-        0.4
-      );
-  }
-  50% {
-    transform: scale(1.1);
-    opacity: 1;
-    box-shadow: 0 0 0 4px
-      hsla(
-        var(--xf-paletteAccent2--h),
-        var(--xf-paletteAccent2--s),
-        var(--xf-paletteAccent2--l),
-        0
-      );
-  }
-  100% {
-    transform: scale(0.8);
-    opacity: 0.8;
-    box-shadow: 0 0 0 0
-      hsla(
-        var(--xf-paletteAccent2--h),
-        var(--xf-paletteAccent2--s),
-        var(--xf-paletteAccent2--l),
-        0
-      );
-  }
-}
-
-.tabName {
-  max-width: 120px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }
 
 .stickerContent {
@@ -425,12 +224,6 @@
       var(--xf-textColorFeature--l),
       0.15
     );
-    border-color: hsla(
-      var(--xf-textColorFeature--h),
-      var(--xf-textColorFeature--s),
-      var(--xf-textColorFeature--l),
-      0.4
-    );
     color: hsla(
       var(--xf-textColorFeature--h),
       var(--xf-textColorFeature--s),
@@ -440,7 +233,3 @@
     font-weight: 600;
   }
 }
-
-/* Modal styles are now in the reusable modal component */
-
-/* Action button styles moved to StickerSizeModal.module.scss */

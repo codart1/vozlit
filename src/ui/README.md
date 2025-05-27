@@ -83,3 +83,62 @@ import { ActionModal } from '../ui';
   Modal Content
 </ActionModal>
 ```
+
+## Tabs Component
+
+The `Tabs` component provides a flexible and customizable tabbed interface for organizing content.
+
+```tsx
+import { Tabs, TabItem } from '../ui';
+
+// Define the tabs data
+const tabs: TabItem[] = [
+  {
+    id: 'tab1',
+    label: 'First Tab',
+    icon: 'optional-icon-url.png', // Optional
+    content: <div>Content for first tab</div>, // Optional if using renderTabContent
+    disabled: false // Optional, defaults to false
+  },
+  {
+    id: 'tab2',
+    label: 'Second Tab',
+    content: <div>Content for second tab</div>
+  },
+  // Add more tabs as needed
+];
+
+// Optional custom tab content renderer
+const renderCustomTabContent = (tab: TabItem, index: number) => (
+  <div>Custom content for {tab.label} (index: {index})</div>
+);
+
+<Tabs
+  tabs={tabs} // Array of tab items
+  defaultActiveIndex={0} // Optional, defaults to 0
+  onTabChange={(index) => setActiveTab(index)} // Optional tab change handler
+  renderTabContent={renderCustomTabContent} // Optional custom renderer
+  showActiveIndicator={true} // Optional, show dot indicator on active tab icon
+  maxLabelLength={20} // Optional, truncate labels longer than this
+  variant="default" // 'default' | 'pills' | 'underline' | 'minimal'
+  size="medium" // 'small' | 'medium' | 'large'
+  orientation="horizontal" // 'horizontal' | 'vertical'
+  fullWidth={false} // Optional, make tabs fill container width
+  class="optional-container-class" // Optional container class
+  tabsClass="optional-tabs-class" // Optional class for tabs bar
+  contentClass="optional-content-class" // Optional class for content area
+  contentHeight="400px" // Optional, custom height for the tab content area
+/>
+```
+
+The `Tabs` component is highly customizable:
+
+- **Variants**: Choose from different visual styles: default (underlined), pills, minimal
+- **Sizes**: Select from small, medium, and large sizes
+- **Orientations**: Support for both horizontal and vertical layouts
+- **Full Width**: Option to make tabs fill the entire width of the container
+- **Custom Content**: Flexible content rendering with fallbacks
+- **Active Indicator**: Option to show a pulsing indicator on active tabs
+- **Label Truncation**: Automatically handles long tab labels
+
+For more examples, see `src/components/UI-Examples/TabsExample.tsx`.
