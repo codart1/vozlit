@@ -133,7 +133,7 @@
 
 :root {
   --v-animation-speed: 0.25s;
-  
+
   // Default panel styling
   --vl-panel-bg: rgba(255, 255, 255, 0.98);
   --vl-button-bg: #f0f0f0;
@@ -166,12 +166,13 @@ html[data-theme='button-blue-light'] {
     pointer-events: none;
     user-select: none;
   }
-  
+
   &-slide-out {
     transform: translateY(6px);
     opacity: 0;
     visibility: hidden;
-    transition: transform var(--v-animation-speed) cubic-bezier(0.25, 0.1, 0.25, 1),
+    transition: transform var(--v-animation-speed)
+        cubic-bezier(0.25, 0.1, 0.25, 1),
       opacity var(--v-animation-speed) cubic-bezier(0.25, 0.1, 0.25, 1),
       visibility var(--v-animation-speed) cubic-bezier(0.25, 0.1, 0.25, 1);
   }
@@ -179,97 +180,124 @@ html[data-theme='button-blue-light'] {
     transform: translateY(0);
     opacity: 1;
     visibility: visible;
-    transition: transform var(--v-animation-speed) cubic-bezier(0.25, 0.1, 0.25, 1),
+    transition: transform var(--v-animation-speed)
+        cubic-bezier(0.25, 0.1, 0.25, 1),
       opacity var(--v-animation-speed) cubic-bezier(0.25, 0.1, 0.25, 1),
       visibility var(--v-animation-speed) cubic-bezier(0.25, 0.1, 0.25, 1);
   }
-  
+
   &-slide-right {
     transform: translateX(100%);
     transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   }
-  
+
   &-slide-left {
     transform: translateX(0);
     transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   }
-  
+
   &-flex {
     display: flex;
   }
-  
+
   &-flex-center {
     display: flex;
     align-items: center;
     justify-content: center;
   }
-  
+
   // Blurred colorful bubbles animation
   &-bubble-bg {
     position: relative;
     overflow: hidden;
-    
+
     // Create the colorful bubbles
     .bubble {
+      pointer-events: none;
       position: absolute;
       border-radius: 50%;
       filter: blur(10px);
       opacity: 0.5;
-      z-index: -3;
-      
+      z-index: 0;
+
       // Animation for all bubbles
       animation-iteration-count: infinite;
       animation-timing-function: ease-in-out;
       animation-name: float-bubble;
-      
+
       // Bubble 1 - Feature color
       &:nth-child(1) {
         width: 100px;
         height: 100px;
-        background-color: hsla(var(--xf-textColorFeature--h), var(--xf-textColorFeature--s), var(--xf-textColorFeature--l), 0.4);
+        background-color: hsla(
+          var(--xf-textColorFeature--h),
+          var(--xf-textColorFeature--s),
+          var(--xf-textColorFeature--l),
+          0.4
+        );
         bottom: -20px;
         left: 10%;
         animation-duration: 12s;
       }
-      
+
       // Bubble 2 - Link color
       &:nth-child(2) {
         width: 80px;
         height: 80px;
-        background-color: hsla(var(--xf-linkColor--h), var(--xf-linkColor--s), var(--xf-linkColor--l), 0.4);
+        background-color: hsla(
+          var(--xf-linkColor--h),
+          var(--xf-linkColor--s),
+          var(--xf-linkColor--l),
+          0.4
+        );
         bottom: 30%;
         left: 30%;
         animation-duration: 18s;
         animation-delay: 1s;
       }
-      
+
       // Bubble 3 - Accent color
       &:nth-child(3) {
         width: 140px;
         height: 140px;
-        background-color: hsla(var(--xf-paletteAccent1--h), var(--xf-paletteAccent1--s), var(--xf-paletteAccent1--l), 0.4);
+        background-color: hsla(
+          var(--xf-paletteAccent1--h),
+          var(--xf-paletteAccent1--s),
+          var(--xf-paletteAccent1--l),
+          0.4
+        );
         top: 10%;
         right: 20%;
         animation-duration: 15s;
         animation-delay: 2s;
       }
-      
+
       // Bubble 4 - Accent color 2
       &:nth-child(4) {
         width: 60px;
         height: 60px;
-        background-color: hsla(var(--xf-paletteAccent2--h), var(--xf-paletteAccent2--s), var(--xf-paletteAccent2--l), 0.4);
+        background-color: hsla(
+          var(--xf-paletteAccent2--h),
+          var(--xf-paletteAccent2--s),
+          var(--xf-paletteAccent2--l),
+          0.4
+        );
         top: 20%;
         left: 15%;
         animation-duration: 14s;
         animation-delay: 3s;
       }
-      
+
       // Bubble 5 - Accent color 3
       &:nth-child(5) {
         width: 120px;
         height: 120px;
-        background-color: hsla(var(--xf-paletteAccent3--h), var(--xf-paletteAccent3--s), var(--xf-paletteAccent3--l), 0.4);
+        background-color: hsla(
+          var(--xf-paletteAccent3--h),
+          var(--xf-paletteAccent3--s),
+          var(--xf-paletteAccent3--l),
+          0.4
+        );
         bottom: 15%;
         right: 10%;
         animation-duration: 20s;

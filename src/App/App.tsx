@@ -5,6 +5,7 @@ import {
   initializeTheme,
 } from '../components/ThemeSettings/ThemeSettings';
 import { EditorSticker } from '../components/Stickers/EditorSticker';
+import { UserVFX } from '../components/UserVFX/UserVFX';
 
 // Initialize theme as soon as possible to avoid flickering
 initializeTheme();
@@ -91,6 +92,7 @@ const App: Component = () => {
       </Show>
 
       <EditorSticker />
+      <UserVFX />
     </>
   );
 };
