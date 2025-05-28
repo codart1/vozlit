@@ -8,7 +8,7 @@ import { libInjectCss } from 'vite-plugin-lib-inject-css';
 const userscriptHeader = `// ==UserScript==
 // @name         VozLit
 // @namespace    http://vozlit.com/
-// @version      0.1.1
+// @version      0.1.2
 // @description  Make voz great again!
 // @author       Zollback
 // @match        https://voz.vn/*

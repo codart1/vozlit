@@ -1,4 +1,5 @@
 import { observeSelector } from '../../helpers/observeSelector';
+import styles from './UserVFX.module.scss';
 
 const SCRIPT_AUTHOR = 'zollback2';
 
@@ -13,11 +14,11 @@ export function UserVFX() {
     const username = usernameElement ? usernameElement.textContent : 'unknown';
 
     if (username === SCRIPT_AUTHOR) {
-      el.classList.add('uti-bubble-bg');
+      el.classList.add(styles.utiBubbleBg);
       // append 5 bubble elements
       for (let i = 0; i < 5; i++) {
         const bubble = document.createElement('div');
-        bubble.className = 'bubble';
+        bubble.className = styles.bubble;
         el.appendChild(bubble);
       }
     }

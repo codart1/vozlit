@@ -69,20 +69,10 @@ const App: Component = () => {
           </button>
         </div>
 
-        <div class={style['drawer-content']}>
+        <div
+          class={style['drawer-content']}
+        >
           <ThemeSettings />
-          <div
-            class="uti-bubble-bg"
-            style={{
-              height: '400px',
-            }}
-          >
-            <div class="bubble"></div>
-            <div class="bubble"></div>
-            <div class="bubble"></div>
-            <div class="bubble"></div>
-            <div class="bubble"></div>
-          </div>
         </div>
       </div>
 
