@@ -21,16 +21,16 @@ export function UserVFX() {
         bubble.className = styles.bubble;
         el.appendChild(bubble);
       }
-    }
 
-    /**
-     * Maybe there is a nested element looking like this:
-     * <h5 class="userTitle message-userTitle" dir="auto" itemprop="jobTitle">Senior Member</h5>
-     * If so, change the text to "Chủ tịt VozLit 🔥"
-     */
-    const jobTitleElement = el.querySelector('[itemprop="jobTitle"]');
-    if (jobTitleElement) {
-      jobTitleElement.textContent = 'Chủ tịt VozLit 🔥';
+      /**
+       * Maybe there is a nested element looking like this:
+       * <h5 class="userTitle message-userTitle" dir="auto" itemprop="jobTitle">Senior Member</h5>
+       * If so, change the text to "Chủ tịt VozLit 🔥"
+       */
+      const jobTitleElement = el.querySelector('[itemprop="jobTitle"]');
+      if (jobTitleElement) {
+        jobTitleElement.textContent = 'Chủ tịt VozLit 🔥';
+      }
     }
   });
   return <></>;
