@@ -1,0 +1,112 @@
+.bar {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem; /* Position at bottom right */
+  z-index: 9999;
+  font-size: 0.7rem;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.toggle-button {
+  background-color: var(--vl-panel-bg, rgba(255, 255, 255, 0.95));
+  border-radius: 50%;
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 5px 14px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(8px);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  color: var(--vl-button-text, #333);
+  
+  &:hover {
+    box-shadow: 0 7px 17px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px) scale(1.05);
+  }
+
+  &:active {
+    transform: translateY(0) scale(0.98);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 300px;
+  background: var(--vl-panel-bg, rgba(255, 255, 255, 0.98));
+  box-shadow: -5px 0 25px rgba(0, 0, 0, 0.15);
+  border-left: 1px solid rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(10px);
+  z-index: 9998;
+  padding: 1.5rem 1.25rem;
+  transform: translateX(100%);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow-y: auto;
+  
+  &.open {
+    transform: translateX(0);
+  }
+}
+
+.drawer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  padding-bottom: 1rem;
+}
+
+.drawer-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--vl-button-text, #333);
+}
+
+.close-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 4px;
+  
+  &:hover {
+    opacity: 1;
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+}
+
+.drawer-content {
+  padding: 0.5rem 0;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.25);
+  z-index: 9997;
+  backdrop-filter: blur(2px);
+  opacity: 0;
+  animation: fadeIn 0.2s forwards;
+  animation-delay: 0.05s;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
