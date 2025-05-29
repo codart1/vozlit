@@ -7,7 +7,7 @@ declare global {
   interface FroalaEditorStatic {
     INSTANCES: import('froala-editor').default[];
   }
-  var FroalaEditor: FroalaEditorStatic;
+  var FroalaEditor: FroalaEditorStatic | undefined;
 }
 
 export function EditorSticker() {
@@ -30,15 +30,15 @@ function StickerPortal(props: { editor: FE }) {
 }
 
 function useFroalaInstances() {
-  const [instances, setInstances] = createSignal<FE[]>([
-    ...FroalaEditor.INSTANCES,
-  ]);
+  const F_INSTANCES = window.FroalaEditor?.INSTANCES ?? [];
+
+  const [instances, setInstances] = createSignal<FE[]>([...F_INSTANCES]);
 
   function notifyChange() {
-    setInstances([...FroalaEditor.INSTANCES]);
+    setInstances([...F_INSTANCES]);
   }
 
-  const proxyInstances = new Proxy(FroalaEditor.INSTANCES, {
+  const proxyInstances = new Proxy(F_INSTANCES, {
     set(target, prop, value) {
       const result = Reflect.set(target, prop, value);
       notifyChange();
@@ -51,7 +51,9 @@ function useFroalaInstances() {
     },
   });
 
-  FroalaEditor.INSTANCES = proxyInstances;
+  if (window.FroalaEditor?.INSTANCES) {
+    window.FroalaEditor.INSTANCES = proxyInstances;
+  }
 
   return instances;
 }
