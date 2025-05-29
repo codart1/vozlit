@@ -114,3 +114,6 @@ Because XenForo does not publish a single centralized list, the definitive sourc
 [3]: https://xenforo.com/community/threads/xenforo-ajax-tutorial.8091/page-3?utm_source=chatgpt.com "XenForo AJAX Tutorial | Page 3"
 [4]: https://xenforo.com/community/threads/use-an-action-from-a-different-controller-and-receive-data.220906/?utm_source=chatgpt.com "XF 2.3 - Use an action from a different controller and receive data"
 [5]: https://xenforo.com/community/threads/call-xf-with-the-right-language-from-an-extern-page.120809/?utm_source=chatgpt.com "Call XF with the right language from an extern page - XenForo"
+
+
+_xfResponseType=json
