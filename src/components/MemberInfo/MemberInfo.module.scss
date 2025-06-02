@@ -1,0 +1,127 @@
+.postHistoryBtn {
+  margin-top: 8px;
+  opacity: 0.85;
+  
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  min-height: 100px;
+
+  &::after {
+    content: "";
+    width: 24px;
+    height: 24px;
+    border: 2px solid hsla(var(--xf-linkColor--h), var(--xf-linkColor--s), var(--xf-linkColor--l), 0.3);
+    border-radius: 50%;
+    border-top-color: hsla(var(--xf-linkColor--h), var(--xf-linkColor--s), var(--xf-linkColor--l), var(--xf-linkColor--a));
+    animation: spinner 0.8s linear infinite;
+  }
+}
+
+@keyframes spinner {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.postHistoryContainer {
+  /* Styling for the post history content */
+  max-height: 70vh;
+  overflow-y: auto;
+
+  /* Style fixes for Xenforo content */
+  :global(.block-row) {
+    padding: 10px;
+    border-bottom: 1px solid var(--xf-borderColor);
+  }
+
+  :global(.contentRow-main) {
+    width: 100%;
+  }
+
+  :global(.contentRow-title) {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+
+  :global(.contentRow-snippet) {
+    margin-bottom: 8px;
+    line-height: 1.4;
+  }
+
+  :global(.contentRow-minor) {
+    font-size: 0.85em;
+    color: var(--xf-textColorMuted);
+  }
+}
+
+.postHistoryContainer img {
+  max-width: 100%;
+  height: auto;
+}
+
+.errorMessage {
+  color: hsla(0, 100%, 65%, 1);
+  text-align: center;
+  padding: 20px;
+}
+
+.errorDetail {
+  font-size: 0.85em;
+  color: hsla(0, 60%, 70%, 1);
+  margin-top: 5px;
+}
+
+.refreshButton {
+  cursor: pointer;
+  display: inline-block;
+  padding: 6px 12px;
+  margin-top: 10px;
+  background-color: hsla(
+    var(--xf-linkColor--h),
+    var(--xf-linkColor--s),
+    var(--xf-linkColor--l),
+    var(--xf-linkColor--a)
+  );
+  color: white;
+  border-radius: 3px;
+  font-size: 12px;
+
+  &:hover {
+    background-color: hsla(
+      var(--xf-linkColor--h),
+      var(--xf-linkColor--s),
+      calc(var(--xf-linkColor--l) - 10%),
+      var(--xf-linkColor--a)
+    );
+  }
+}
+
+.modalFooter {
+  margin-top: 15px;
+  padding-top: 10px;
+  border-top: 1px solid hsla(var(--xf-borderColor--h), var(--xf-borderColor--s), var(--xf-borderColor--l), var(--xf-borderColor--a));
+  font-size: 12px;
+  color: var(--xf-textColorMuted);
+  text-align: center;
+}
+
+.footerNote {
+  font-style: italic;
+}
+
+.postHistoryBtn {
+  margin-top: 8px;
+  opacity: 0.85;
+
+  &:hover {
+    opacity: 1;
+  }
+}

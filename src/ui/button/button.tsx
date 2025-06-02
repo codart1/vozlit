@@ -1,7 +1,7 @@
 import style from './button.module.scss';
 import { JSX, mergeProps, splitProps } from 'solid-js';
 
-export type ButtonVariant = 'primary' | 'secondary' | 'danger' | 'success' | 'cancel';
+export type ButtonVariant = 'primary' | 'secondary' | 'danger' | 'success' | 'cancel' | 'text';
 export type ButtonSize = 'sm' | 'md' | 'lg';
 
 export interface ButtonProps extends JSX.ButtonHTMLAttributes<HTMLButtonElement> {

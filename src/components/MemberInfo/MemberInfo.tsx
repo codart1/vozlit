@@ -1,76 +1,9 @@
-import { For } from 'solid-js';
+import { createSignal, For } from 'solid-js';
 import { Portal } from 'solid-js/web';
 import { useElementsBySelector } from '../../helpers';
-
-export function MemberInfo() {
-  const [elements] = useElementsBySelector('.message-cell--user');
-
-  const processedElements = () => {
-    return elements().map((el) => {
-      // find the child with class: message-user
-      const container = el.querySelector('.message-user')!;
-      const username = container
-        .querySelector('.message-name a')
-        ?.textContent?.trim();
-      return {
-        container,
-        username,
-      };
-    });
-  };
-
-  return (
-    <For each={processedElements()}>
-      {({ container, username }) => (
-        <MemberInfoItem container={container} username={username} />
-      )}
-    </For>
-  );
-}
-
-type MemberInfoItemProps = {
-  container: Element;
-  username?: string;
-};
-
-function MemberInfoItem(props: MemberInfoItemProps) {
-  return (
-    <Portal mount={props.container}>
-      <div
-        onClick={async () => {
-          if (!props.username) {
-            console.warn('Username not found for member info item');
-            return;
-          }
-          const postHistory = await fetchUserPostsHistory(props.username);
-          console.log('User posts history:', postHistory);
-        }}
-      >
-        Show posts history
-      </div>
-    </Portal>
-  );
-}
-
-function fetchUserPostsHistory(username: string) {
-  return XF.ajax<{
-    status: string;
-    html: {
-      content: string;
-      title: string;
-      css: string[];
-    };
-    visitor: {
-      conversations_unread: string;
-      alerts_unviewed: string;
-      total_unread: string;
-    };
-  }>('GET', XF.canonicalizeUrl('search/1935757/'), {
-    'c[users]': username,
-    o: 'relevance',
-    _xfResponseType: 'json',
-  });
-}
+import { Button } from '../../ui/button';
+import styles from './MemberInfo.module.scss';
+import { PostHistoryModal } from './PostHistoryModal';
 
 /**
  * Each message-cell--user element looks like this:
@@ -107,3 +40,76 @@ function fetchUserPostsHistory(username: string) {
 					</div>
  * ```
  */
+
+export function MemberInfo() {
+  const [elements] = useElementsBySelector('.message-cell--user');
+
+  const processedElements = () => {
+    return elements().map((el) => {
+      // find the child with class: message-user
+      const container = el.querySelector('.message-user')!;
+      const username = container
+        .querySelector('.message-name a')
+        ?.textContent?.trim();
+      const userId = container
+        .querySelector('.message-name a')
+        ?.getAttribute('data-user-id');
+      return {
+        container,
+        username,
+        userId,
+      };
+    });
+  };
+
+  return (
+    <For each={processedElements()}>
+      {({ container, username, userId }) => (
+        <MemberInfoItem 
+          container={container} 
+          username={username} 
+          userId={userId || undefined} 
+        />
+      )}
+    </For>
+  );
+}
+
+type MemberInfoItemProps = {
+  container: Element;
+  username?: string;
+  userId?: string;
+};
+
+function MemberInfoItem(props: MemberInfoItemProps) {
+  const [isModalOpen, setIsModalOpen] = createSignal(false);
+
+  const handleClick = () => {
+    if (!props.username) {
+      console.warn('Username not found for member info item');
+      return;
+    }
+    setIsModalOpen(true);
+  };
+
+  return (
+    <>
+      <Portal mount={props.container}>
+        <Button 
+          variant="text" 
+          size="sm" 
+          onClick={handleClick}
+          class={styles.postHistoryBtn}
+        >
+          Show posts history
+        </Button>
+      </Portal>
+
+      <PostHistoryModal
+        isOpen={isModalOpen()}
+        onClose={() => setIsModalOpen(false)}
+        username={props.username}
+      />
+    </>
+  );
+}
